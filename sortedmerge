@@ -1,0 +1,31 @@
+def mixAB(A,B):
+    indexA=len(A)-1
+    indexB=len(B)-1
+    
+    mixindex=indexA+indexB+1
+    
+    AB=[0]*(len(A)+len(B))
+    while(indexB>=0):
+        if(indexA>=0 and A[indexA]>B[indexB]):
+            print indexA, indexB,A[indexA],B[indexB],"A"
+            AB[mixindex]=A[indexA]
+            indexA-=1
+            mixindex-=1
+            if (indexA==-1 and B[indexB]<=A[0]):
+                AB[mixindex]=B[indexB]
+            
+        else:
+            print indexA, indexB,A[indexA],B[indexB],"B"
+            
+            AB[mixindex]=B[indexB]
+            indexB-=1
+            mixindex-=1
+            print indexA, indexB, "kk"
+            if (indexB==-1 and A[indexA]<=B[0]):
+                AB[mixindex]=A[indexA]
+ 
+    
+    return AB
+a=[3,5,7,9,11,34]
+b=[2,4,6,12,14]
+print mixAB(a,b)      
