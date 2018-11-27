@@ -1,0 +1,29 @@
+def quicksort(arr,left,right):
+    print arr,"initial arr"
+    index=partition(arr,left,right)
+    print arr[index],index,left,right,arr
+    if(left<index-1):
+        quicksort(arr,left,index-1)
+    if(index<right):
+        quicksort(arr,index,right)
+
+def partition(arr,left,right):
+    pivot=arr[(right+left)/2]
+    print pivot,"pivot"
+    while(left<=right):
+        while(arr[left]<pivot):
+            left+=1
+        while(arr[right]>pivot):
+            right-=1
+        if(left<=right):
+            temp=arr[left]
+            arr[left]=arr[right]
+            arr[right]=temp
+            left+=1
+            right-=1
+    print left,right,"kkkkkk"
+    return left
+arr=[110,82,81,120,40,50,70]
+
+quicksort(arr,0,6)        
+print arr
