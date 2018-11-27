@@ -1,0 +1,25 @@
+#sort characters in a string
+def sortchar(s):
+    L=[]
+    for i in range(len(s)):
+        L.append(s[i])
+    L.sort()
+    outstr=''
+    for c in L:
+        outstr+=c
+    return outstr
+print sortchar("akram")
+
+def sortstrings(Ls):
+    dict={}
+    for i in range(len(Ls)):
+        if sortchar(Ls[i]) not in dict.keys():
+            dict[sortchar(Ls[i])]=[Ls[i]]
+            print dict,"nist",Ls[i]
+        else:
+            print dict[sortchar(Ls[i])]
+            dict[sortchar(Ls[i])].append(Ls[i])
+            print dict,"hast"
+    return dict.values()
+Ls=["akram","zahra","marka"]
+p=sortstrings(Ls)
