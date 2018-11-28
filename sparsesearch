@@ -1,0 +1,67 @@
+arr=["a","","","","bcd","","bcn","n"]
+
+
+def Findstring(stringS,left,right,arr):
+    mid=(left+right)/2
+    if arr[mid]=="":
+        mid=movemid(mid,arr,left,right)
+    if (compare(arr[mid],stringS)==0):
+        
+        print "find it"
+        print "  index is:",mid
+        return mid
+           
+    elif (compare(arr[mid],stringS)==-1):
+        print arr[mid],"<", stringS
+        Findstring(stringS,mid+1,right,arr)
+    elif (compare(arr[mid],stringS)==1):
+        print arr[mid],">", stringS
+        Findstring(stringS,left,mid,arr)
+    else:
+        print "nothing"
+    
+#compare two strings        
+def compare(s1,s2):
+    flag=10
+    if s1==s2:
+        flag=0
+     
+    for i in range(0,min(len(s1),len(s2))):
+        
+        if(s1[i]<s2[i]):
+            flag=-1
+            break
+        if(s1[i]>s2[i]):
+            flag=1
+            break
+        
+    if(flag==10 and len(s1)<len(s2)):
+        flag=-1
+        
+    if(flag==10 and len(s1)>len(s2)):    
+        flag=1
+   
+    return flag
+        
+            
+            
+            
+    
+        
+def movemid(mid,arr,left,right):
+    midr=mid+1 
+    midl=mid-1
+    while(True):
+        if (midr<=right and arr[midr]!=""):
+            mid=midr
+            break
+        elif(midl>=left and arr[midl]!=""):
+            mid=midl
+            break
+        else:
+            
+            midr=midr+1
+            midl=midl-1 
+    return mid
+right=len(arr)-1  
+Findstring("bcn",0,right,arr)  
